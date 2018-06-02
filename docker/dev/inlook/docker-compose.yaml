@@ -15,3 +15,8 @@ services:
           - 9200:9200
         volumes:
           - ../../../src/services/mailer:/app
+
+    mailhog:
+       image: mailhog/mailhog
+       ports:
+         - 8025:8025

@@ -17,7 +17,7 @@
 x64/
 x86/
 bld/
-#[Bb]in/
+[Bb]in/
 [Oo]bj/
 [Ll]og/
 
@@ -319,3 +319,12 @@ ASALocalRun/
 # ---------------------------------------------
 
 .DS_Store
+
+###> symfony/framework-bundle ###
+src/services/mailer/.env
+src/services/mailer/public/bundles/
+src/services/mailer/var/
+src/services/mailer/vendor/
+!src/services/mailer/bin
+###< symfony/framework-bundle ###
+
