@@ -9,7 +9,8 @@ services:
     restart: always
     build: ../../src/services/todos
     entrypoint: >
-      /svc/wait-for-it.sh --strict --timeout=30 postgres:5432 --
+      /svc/wait-for-it.sh --strict --timeout=120 postgres:5432 --
+      /svc/wait-for-it.sh --strict --timeout=120 graylog:9000 --
       dotnet ToDos.WebApi.dll
     ports:
       - 5000:5000
