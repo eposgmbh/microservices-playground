@@ -14,7 +14,7 @@ services:
         ports:
           - 9200:9200
         volumes:
-          - ../../../src/services/mailer:/app
+          - ../../../src/services/mailer:/app:cached
 
     mailhog:
        image: mailhog/mailhog
