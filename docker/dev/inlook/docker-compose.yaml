@@ -1,13 +1,13 @@
 version: '3'
 
 services:
-    node:
-        restart: always
-        build: node
-        ports:
-            - 4200:4200
-        volumes:
-          - ../../../src/apps/inlook:/app
+#    node:
+#        restart: always
+#        build: node
+#        ports:
+#            - 4200:4200
+#        volumes:
+#          - ../../../src/apps/inlook:/app
 
     php:
         build: php
