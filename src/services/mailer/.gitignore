@@ -1,0 +1,30 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Symfony template
+# Cache, session files and logs (Symfony3)
+var
+
+# Managed by Composer
+
+bin/*
+!bin/console
+!bin/symfony_requirements
+vendor
+
+# Assets and user uploads
+public/bundles/
+public/uploads/
+
+# PHPUnit
+phpunit.xml
+
+# Build data
+build/
+
+# Backup entities generated with doctrine:generate:entities command
+**/Entity/*~
+
+.env
+
+# Embedded web-server pid file
+.web-server-pid
+
