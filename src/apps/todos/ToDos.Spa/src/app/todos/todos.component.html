@@ -1,0 +1,47 @@
+<mat-form-field class="table-filter">
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Table filter">
+</mat-form-field>
+<mat-table [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="text">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Text</mat-header-cell>
+    <mat-cell *matCellDef="let toDo">{{toDo.text}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="userId">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>User</mat-header-cell>
+    <mat-cell *matCellDef="let toDo">{{toDo.userId}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="updated">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Updated</mat-header-cell>
+    <mat-cell *matCellDef="let toDo">{{toDo.updated | date}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="done">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Done</mat-header-cell>
+    <mat-cell *matCellDef="let toDo">
+      <mat-checkbox [checked]="toDo.done" (change)="updateToDo(toDo)"></mat-checkbox>
+    </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<br />
+
+<mat-card>
+  <mat-form-field>
+    <input matInput placeholder="Text" [(ngModel)]="newToDo.text">
+  </mat-form-field>
+  <br/>
+  <mat-form-field>
+    <input matInput placeholder="User" [(ngModel)]="newToDo.userId">
+  </mat-form-field>
+  <br/>
+  <mat-form-field>
+    <input matInput placeholder="Updated" value="{{newToDo.updated | date}}" readonly>
+  </mat-form-field>
+  <br />
+  <mat-checkbox [(ngModel)]="newToDo.done">Erledigt</mat-checkbox>
+  <br/>
+  <br/>
+
+  <button mat-raised-button color="primary" [disabled]="newToDo.text?.length == 0 || newToDo.userId?.length == 0" (click)="addToDo();">ADD TODO</button>
+</mat-card>

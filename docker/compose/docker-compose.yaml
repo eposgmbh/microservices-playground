@@ -5,7 +5,7 @@ services:
   # --- ToDos Service ---
 
   todos-service:
-    image: eposgmbh/todos-webapi:latest
+    image: eposgmbh/todos-service:latest
     restart: always
     build: ../../src/services/todos
     entrypoint: >
@@ -16,3 +16,32 @@ services:
       - 5000:5000
     depends_on:
       - postgres
+      - graylog
+
+  # --- ToDos App ---
+
+  todos-api-gateway:
+    image: eposgmbh/todos-api-gateway:latest
+    restart: always
+    build: ../../src/apps/todos/ToDos.ApiGateway
+    entrypoint: >
+      /svc/wait-for-it.sh --strict --timeout=120 todos-service:5000 --
+      /svc/wait-for-it.sh --strict --timeout=120 graylog:9000 --
+      dotnet ToDos.ApiGateway.dll
+    ports:
+      - 4000:4000
+    depends_on:
+      - todos-service
+      - graylog
+
+  todos-spa:
+    image: eposgmbh/todos-spa:latest
+    restart: always
+    build: ../../src/apps/todos/ToDos.Spa
+    entrypoint: >
+      /wait-for-it.sh --strict --timeout=120 todos-api-gateway:4000 --
+      nginx -g 'daemon off;'
+    ports:
+      - 80:80
+    depends_on:
+      - todos-api-gateway

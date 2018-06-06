@@ -3,18 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-
-using Gelf.Extensions.Logging;
-
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-#pragma warning disable 1591
-
-namespace ToDos.WebApi
+namespace ToDos.ApiGateway
 {
     public class Program
     {
@@ -25,8 +19,16 @@ namespace ToDos.WebApi
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost
                 .CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((hostingContext, config) => {
+                    config
+                        .AddJsonFile("ocelot.json", optional: false, reloadOnChange: true)
+                        .AddJsonFile(
+                            $"ocelot.{hostingContext.HostingEnvironment.EnvironmentName}.json",
+                            optional: true, reloadOnChange: true
+                        );
+                })
                 .UseStartup<Startup>()
-                .UseUrls("http://0.0.0.0:5000")
-                .ConfigureGelfLogging(tag: "todos-service");
+                .UseUrls("http://0.0.0.0:4000")
+                .ConfigureGelfLogging(tag: "todos-api-gateway");
     }
 }
