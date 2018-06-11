@@ -45,3 +45,8 @@ services:
       - 80:80
     depends_on:
       - todos-api-gateway
+    logging:
+      driver: gelf
+      options:
+        gelf-address: "udp://localhost:12201"
+        tag: todos-spa

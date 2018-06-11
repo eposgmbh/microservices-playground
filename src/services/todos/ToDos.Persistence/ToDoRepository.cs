@@ -56,12 +56,7 @@ namespace ToDos.Persistence
             theToDo.Text = toDo.Text;
             theToDo.Done = toDo.Done;
             theToDo.UserId = toDo.UserId;
-
-            if (toDo.Updated != theToDo.Updated) {
-                theToDo.Updated = toDo.Updated;
-            } else {
-                theToDo.Updated = DateTime.Now;
-            }
+            theToDo.Updated = toDo.Updated;
 
             myContext.ToDos.Update(theToDo);
             await myContext.SaveChangesAsync();

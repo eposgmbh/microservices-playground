@@ -6,7 +6,5 @@
 export const environment = {
   production: false,
   name: 'Development',
-  apiGatewayUri: 'http://localhost:4000/',
-  messageBroadcastUri: 'http://localhost:5001/hub/v1/message-broadcast',
-  auth0RedirectUri: 'http://localhost:4200'
+  apiGatewayUri: 'http://localhost:4000'
 };

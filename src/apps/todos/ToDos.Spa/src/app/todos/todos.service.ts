@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class ToDosService {
-  private readonly serviceUrl = `${environment.apiGatewayUri}bff/todos`;
+  private readonly serviceUrl = `${environment.apiGatewayUri}/bff/todos`;
 
   constructor(private http: HttpClient) { }
 
@@ -22,6 +22,6 @@ export class ToDosService {
   }
 
   updateToDo(toDo: ToDo) {
-    return this.http.put(this.serviceUrl + '/' + toDo.id, toDo);
+    return this.http.put(`${this.serviceUrl}/${toDo.id}`, toDo);
   }
 }
