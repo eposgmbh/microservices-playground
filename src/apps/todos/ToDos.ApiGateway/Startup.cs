@@ -28,21 +28,16 @@ namespace ToDos.ApiGateway
 
         public void ConfigureServices(IServiceCollection services) {
             services.AddOcelot();
-
-            if (HostingEnvironment.IsDevelopment()) {
-                services.AddCors();
-            }
+            services.AddCors();
         }
 
         public void Configure(IApplicationBuilder app) {
-            if (HostingEnvironment.IsDevelopment()) {
-                app.UseCors(cp => {
-                    cp
-                        .AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader();
-                });
-            }
+            app.UseCors(cp => {
+                cp
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            });
 
             app.UseWebSockets();
             app.UseOcelot().Wait();

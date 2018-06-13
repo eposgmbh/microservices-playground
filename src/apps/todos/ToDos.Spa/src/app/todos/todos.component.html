@@ -39,9 +39,11 @@
     <input matInput placeholder="Updated" value="{{newToDo.updated | date}}" readonly>
   </mat-form-field>
   <br />
-  <mat-checkbox [(ngModel)]="newToDo.done">Erledigt</mat-checkbox>
+  <mat-checkbox [(ngModel)]="newToDo.done">Done</mat-checkbox>
   <br/>
   <br/>
 
-  <button mat-raised-button color="primary" [disabled]="newToDo.text?.length == 0 || newToDo.userId?.length == 0" (click)="addToDo();">ADD TODO</button>
+  <button mat-raised-button color="primary" [disabled]="newToDo.text?.length == 0 || newToDo.userId?.length == 0" (click)="addToDo();">
+    ADD TODO
+  </button>
 </mat-card>
