@@ -22,4 +22,4 @@ RUN chmod +x wait-for-it.sh
 
 EXPOSE 5000
 
-ENTRYPOINT ["dotnet", "ToDos.WebApi.dll"]
+ENTRYPOINT [ "dotnet", "ToDos.WebApi.dll" ]

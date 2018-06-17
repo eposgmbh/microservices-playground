@@ -1,0 +1,23 @@
+{
+  "name": "lorem-ipsum-service",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "tsc",
+    "start": "node ./dist/server.js"
+  },
+  "keywords": [
+    "Node.js",
+    "Express",
+    "Microservice"
+  ],
+  "author": "Jan Bohlen",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^2.9.2"
+  },
+  "dependencies": {
+    "@types/express": "^4.16.0",
+    "express": "^4.16.3"
+  }
+}

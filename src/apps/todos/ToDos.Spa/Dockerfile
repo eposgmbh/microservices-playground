@@ -20,4 +20,4 @@ RUN chmod +x wait-for-it.sh
 
 EXPOSE 80
 
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+ENTRYPOINT [ "nginx", "-g", "daemon off;" ]

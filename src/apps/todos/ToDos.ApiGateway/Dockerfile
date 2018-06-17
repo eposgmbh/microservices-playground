@@ -19,4 +19,4 @@ RUN chmod +x wait-for-it.sh
 
 EXPOSE 4000
 
-ENTRYPOINT ["dotnet", "ToDos.ApiGateway.dll"]
+ENTRYPOINT [ "dotnet", "ToDos.ApiGateway.dll" ]
