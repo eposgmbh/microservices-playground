@@ -5,7 +5,6 @@ namespace App\Controller;
 
 
 use App\Form\Mailer\MailType;
-use App\Mailer\Mail;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,8 +23,6 @@ class MailerController extends AbstractController
      */
     public function send(array $data, \Swift_Mailer $swift) : JsonResponse
     {
-
-
         $form = $this->createForm(MailType::class);
 
         $form->submit($data);

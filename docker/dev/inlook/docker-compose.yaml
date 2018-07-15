@@ -13,8 +13,10 @@ services:
         build: php
         ports:
           - 9200:9200
+          - 9201:9201
         volumes:
-          - ../../../src/services/mailer:/app:cached
+          - ../../../src/services/mailer:/app/mailer:cached
+          - ../../../src/apps/inlook:/app/inlook:cached
 
     mailhog:
        image: mailhog/mailhog
