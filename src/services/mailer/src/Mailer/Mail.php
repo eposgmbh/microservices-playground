@@ -3,17 +3,24 @@
 
 namespace App\Mailer;
 
+use Symfony\Component\Validator\Constraints as Assert;
 
 class Mail
 {
 
     /**
      * @var string
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     * )
      */
     private $sender;
 
     /**
      * @var string
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     * )
      */
     private $receiver;
 
@@ -30,7 +37,7 @@ class Mail
     /**
      * @return string
      */
-    public function getSender() : string
+    public function getSender() : ?string
     {
         return $this->sender;
     }
@@ -46,7 +53,7 @@ class Mail
     /**
      * @return string
      */
-    public function getReceiver() : string
+    public function getReceiver() : ?string
     {
         return $this->receiver;
     }
@@ -62,7 +69,7 @@ class Mail
     /**
      * @return string
      */
-    public function getSubject() : string
+    public function getSubject() : ?string
     {
         return $this->subject;
     }
@@ -78,7 +85,7 @@ class Mail
     /**
      * @return string
      */
-    public function getBody() : string
+    public function getBody() : ?string
     {
         return $this->body;
     }

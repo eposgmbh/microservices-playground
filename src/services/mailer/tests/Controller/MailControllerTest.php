@@ -21,27 +21,6 @@ class MailControllerTest extends WebTestCase
 
     }
 
-    public function testMailIsNotSent()
-    {
-        $client = static::createClient();
-
-        // enables the profiler for the next request (it does nothing if the profiler is not available)
-        $client->enableProfiler();
-
-        $requestBody = json_encode([
-            'receiver' => '',
-            'subject' => '',
-            'body' => ''
-        ]);
-
-        $crawler = $client->request('POST', '/send', [], [], ['CONTENT_TYPE' => 'application/json'], $requestBody);
-
-        $mailCollector = $client->getProfile()->getCollector('swiftmailer');
-
-        // checks that an email was sent
-        $this->assertSame(0, $mailCollector->getMessageCount());
-    }
-
     public function testMailIsSentAndContentIsOk()
     {
         $client = static::createClient();

@@ -29,14 +29,13 @@ class MailArgumentValueResolver implements ArgumentValueResolverInterface
     {
         return (
             strpos($request->getPathInfo(), '/send') === 0
-            && $argument->getType() === Mail::class
+            && $argument->getType() === 'array'
+            && $argument->getName() === 'data'
             && !empty($request->getContent())
         );
     }
 
     /**
-     * Resolves the content into an Mail object.
-     *
      * @param Request          $request
      * @param ArgumentMetadata $argument
      *
@@ -45,7 +44,6 @@ class MailArgumentValueResolver implements ArgumentValueResolverInterface
     public function resolve(Request $request, ArgumentMetadata $argument): Generator
     {
         $raw = json_decode($request->getContent(), true);
-        $mail = Mail::fromArray($raw);
-        yield $mail;
+        yield $raw;
     }
 }
