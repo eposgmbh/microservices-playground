@@ -1,0 +1,2 @@
+include ':tags.model'
+project(':tags.model').projectDir = new File(settingsDir, '../tags.model')

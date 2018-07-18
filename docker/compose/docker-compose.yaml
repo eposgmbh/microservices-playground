@@ -59,3 +59,17 @@ services:
     build: ../../src/services/lorem-ipsum
     ports:
       - 5001:5001
+
+  # --- Tags Service ---
+
+  tags-service:
+    image: eposgmbh/tags-service:latest
+    restart: always
+    build: ../../src/services/tags
+    entrypoint: >
+      /svc/wait-for-it.sh --strict --timeout=120 mongo:27017 --
+      java -jar tags.rest-0.1.0.jar
+    ports:
+      - 5002:5002
+    depends_on:
+      - mongo

@@ -1,0 +1,18 @@
+apply plugin: 'java'
+
+jar {
+    baseName = 'tags.persistence'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(':tags.model')
+    compile 'org.mongodb:mongo-java-driver:3.8.0'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8

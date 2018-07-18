@@ -1,0 +1,13 @@
+apply plugin: 'java'
+
+jar {
+    baseName = 'tags.model'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8

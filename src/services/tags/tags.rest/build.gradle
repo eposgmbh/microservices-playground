@@ -1,0 +1,41 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.3.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+bootJar {
+    baseName = 'tags.rest'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile project(':tags.model')
+    compile project(':tags.persistence')
+    compile 'org.springframework.boot:spring-boot-starter-web:2.0.3.RELEASE'
+    compile 'org.mongodb:mongo-java-driver:3.8.0'
+
+    testCompile('org.springframework.boot:spring-boot-starter-test:2.0.3.RELEASE')
+}
+
+task publish(type: Copy) {
+    dependsOn build
+    into "$buildDir/dist"
+    from configurations.runtime
+    from bootJar
+}

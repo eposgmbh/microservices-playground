@@ -1,0 +1,5 @@
+include ':tags.model'
+project(':tags.model').projectDir = new File(settingsDir, '../tags.model')
+
+include ':tags.persistence'
+project(':tags.persistence').projectDir = new File(settingsDir, '../tags.persistence')

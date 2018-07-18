@@ -10,12 +10,19 @@
     "files.exclude": {
         "**/bin/": true,
         "**/obj/": true,
-        "**/node_modules": true
+        "**/node_modules": true,
+        "**/.gradle": true,
+        "**/build": true,
+        "**/.settings": true,
+        "**/.classpath": true,
+        "**/.project": true
     },
     "yaml.schemas": {
         "kubernetes": "kubernetes/*.yaml",
         "https://raw.githubusercontent.com/aanand/compose-file/master/schema/data/config_schema_v3.0.json": "docker/*.yaml"
     },
     "yaml.format.enable": false,
-    "csharp.referencesCodeLens.enabled": true
+    "csharp.referencesCodeLens.enabled": true,
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.format.settings.url": "eclipse-formatter.xml"
 }
